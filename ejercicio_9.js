@@ -21,6 +21,7 @@ class saludo{
 let primerSaludo = new saludo(nombre, apellido);
 primerSaludo.saludar();
 
+console.log(" --------------------------------");
 
 
 
@@ -41,13 +42,7 @@ class empleados{
     }
   }
   sueldoYPrimeraLetra = function sueldoYPrimeraLetra(){
-   for (let index = 0; index < arrayEmpleados.length; index++) {
-    const primeraLetra = arrayEmpleados[index][0];
-
-    if(primeraLetra == "a" || primeraLetra == "g" || primeraLetra == "l" || primeraLetra == "h"){
-      console.log(`${arrayEmpleados[index]} Cobran mas de 35000 y sus nombres comeinzan con la letra "a", "g", "l" o "h" `)
-    }
-   }
+      console.log(`El sueldo de ${this.nombre} es ${this.sueldo}, por lo tanto es mayor a 35.000 y su nombre comienza con "a", "g", "l", o "h" `)
   }
  
   propiedades = function propiedades(){
@@ -58,9 +53,9 @@ class empleados{
     console.log(`Mi nombre es: ${this.nombre} ${this.apellido}. Soy ${this.rol} de la empresa.`);
   }
 
-  // diasRestantes = function diasRestantes(){
-
-  // }
+  diasRestantes = function diasRestantes(){
+    console.log(`A el empleado ${this.nombre} ${this.apellido} le quedan ${this.cantidadDiasVacaciones} días de vacaciones para utilizar`);
+  }
 
   siONoVacaciones = function siONoVacaciones(){
     if(this.tomoVacaciones == false){
@@ -85,9 +80,9 @@ class empleados{
   }
 }
 
-let primerEmpleado = new empleados("ana", "lopez", 1532, "martalopez@gmail.com", "administrativa", 18000, 20, true, 10);
-let segundoEmpleado = new empleados("lucas", "martinez", 1566, "lucasmartinez@gmail.com", "administrativa", 9000, 10, false, 15);
-let tercerEmpleado = new empleados("carlos", "perez", 1544, "carlosperez@gmail.com", "administrativa", 17000, 0, true, 15);
+let primerEmpleado = new empleados("ana", "lopez", 1532, "analopez@gmail.com", "administrativa", 38000, 20, true, 10);
+let segundoEmpleado = new empleados("lucas", "martinez", 1566, "lucasmartinez@gmail.com", "administrativa", 39000, 10, false, 15);
+let tercerEmpleado = new empleados("carlos", "perez", 1544, "carlosperez@gmail.com", "administrativa", 47000, 0, true, 15);
 
 
 
@@ -107,7 +102,14 @@ for (let index = 0; index < arrayEmpleados.length; index++) {
   element.propiedades();
 }
 
+for (let index = 0; index < arrayEmpleados.length; index++) {
+  const element = arrayEmpleados[index];
 
+
+  if (["a", "g", "l", "h"].includes(element.nombre.charAt(0).toLowerCase()) && element.sueldo > 35000 ){
+    element.sueldoYPrimeraLetra();
+  }
+ }
 
 
 // for (let index = 0; index < arrayEmpleados.length; index++) {
@@ -145,6 +147,13 @@ for (let index = 0; index < arrayEmpleados.length; index++) {
   element.siONoVacaciones();
 }
 
+for (let index = 0; index < arrayEmpleados.length; index++) {
+  const element = arrayEmpleados[index];
+  if(element.cantidadDiasVacaciones > 0 ){
+    element.diasRestantes();
+  }
+  
+}
 
 
 
